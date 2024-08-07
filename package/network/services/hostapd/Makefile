@@ -88,8 +88,6 @@ DRIVER_MAKEOPTS= \
 	CONFIG_IEEE80211AC=$(HOSTAPD_IEEE80211AC) \
 	CONFIG_DRIVER_WEXT=$(CONFIG_DRIVER_WEXT_SUPPORT) \
 
-space :=
-space +=
 
 ifeq ($(LOCAL_VARIANT),full)
   DRIVER_MAKEOPTS += CONFIG_IEEE80211W=$(CONFIG_DRIVER_11W_SUPPORT)
@@ -141,7 +139,7 @@ define Package/hostapd/Default
   CATEGORY:=Network
   TITLE:=IEEE 802.1x Authenticator
   URL:=http://hostap.epitest.fi/
-  DEPENDS:=$(DRV_DEPENDS) +hostapd-common +libubus
+  DEPENDS:=$(DRV_DEPENDS) +hostapd-common +libubus +libnl-tiny
   PROVIDES:=hostapd
   CONFLICTS:=$(HOSTAPD_PROVIDERS)
   HOSTAPD_PROVIDERS+=$(1)
@@ -271,7 +269,7 @@ define Package/wpa-supplicant/Default
   CATEGORY:=Network
   TITLE:=WPA Supplicant
   URL:=http://hostap.epitest.fi/wpa_supplicant/
-  DEPENDS:=$(DRV_DEPENDS)
+  DEPENDS:=$(DRV_DEPENDS)  +libnl-tiny
   PROVIDES:=wpa-supplicant
   CONFLICTS:=$(SUPPLICANT_PROVIDERS)
   SUPPLICANT_PROVIDERS+=$(1)
