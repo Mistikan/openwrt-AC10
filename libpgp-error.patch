@@ -1,0 +1,14 @@
+--- a/build_dir/target-mipsel_24kc_musl/libgpg-error-1.12/src/strerror-sym.c
++++ b/build_dir/target-mipsel_24kc_musl/libgpg-error-1.12/src/strerror-sym.c
+@@ -42,9 +42,9 @@
+       int idx;
+ 
+       code &= ~GPG_ERR_SYSTEM_ERROR;
+-      idx = errnos_msgidxof (code);
++      idx = msgidxof (code);
+       if (idx >= 0)
+-	return errnos_msgstr + errnos_msgidx[idx];
++	return msgstr[idx];
+       else
+ 	return NULL;
+     }
